@@ -1,5 +1,24 @@
 import math
 import unittest
+from random import random
+
+def wallis(iterationsCount: int):
+    answer=2
+    for n in range(1,iterationsCount+1):
+        answer=(answer*4*n*n)/(4*n*n-1)
+    return answer
+
+def monte_carlo(iterationsCount: int):
+    count=0
+    for n in range(1,iterationsCount+1):
+        x=random()
+        y=random()
+        distance=x*x+y*y
+        if distance <=1.0:
+            count=count+1
+    answer=4*count/iterationsCount
+    return answer
+        
 
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
